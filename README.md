@@ -1,4 +1,7 @@
-# UstitchManager
+# App State Proof of Concept
+
+Provides an example use of a state machine implemented with rxjs. Completely unpolished...
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
 
