@@ -1,0 +1,22 @@
+<div class="container mx-auto">
+  <table *ngIf="(current$ | async)?.state === 1">
+    <tr>
+      <th class="px-4" *ngFor="let h of (data$ | async)?.header ">{{ h }}</th>
+    </tr>
+    <tr *ngFor="let r of (data$ | async)?.rows">
+      <td class="px-4" *ngFor="let c of r">{{ c }}</td>
+    </tr>
+  </table>
+  <div *ngIf="(current$ | async)?.state === 2">
+    <label for="leaseStart">Lease Start Date:</label>
+    <input type="date" name="start" id="leaseStart">
+    <label for="leaseEnd">Lease End Date:</label>
+    <input type="date" name="end" id="leaseEnd">
+  </div>
+  <button *ngIf="(current$ | async)?.state === 1" class="p-1 m-2 btn btn-blue" (click)="onEdit()">Edit</button>
+  <button *ngIf="(current$ | async)?.state === 2" class="p-1 m-2 btn btn-red" (click)="onClose()">X</button>
+  <button *ngIf="(current$ | async)?.state === 2" class="p-1 m-2 btn btn-blue" (click)="onSubmit()">Submit</button>
+  <br/>
+  <p>Application State: {{ appStore.state }} Previous: {{ appStore.previous }}</p>
+  <p *ngIf="(current$ | async)?.state === 2 && (current$ | async)?.previous === 3">Error Occured Please try again...</p>
+</div>
